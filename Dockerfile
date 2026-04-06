@@ -14,6 +14,10 @@ RUN mkdir -p /usr/local/icecast/logs && \
     touch /usr/local/icecast/logs/access.log && \
     chown -R icecast:icecast /usr/local/icecast
 
+# Créer un fichier mime.types vide pour éviter le WARN
+RUN touch /etc/mime.types && \
+    chown icecast:icecast /etc/mime.types
+
 # Copier ta configuration
 COPY icecast.xml /etc/icecast2/icecast.xml
 
