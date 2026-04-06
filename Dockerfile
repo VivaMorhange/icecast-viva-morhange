@@ -8,8 +8,10 @@ RUN apt-get update && \
 # Créer un utilisateur système icecast
 RUN adduser --system --group icecast
 
-# Créer les dossiers de logs attendus par Icecast
+# Créer l'arborescence complète attendue par Icecast
 RUN mkdir -p /usr/local/icecast/logs && \
+    touch /usr/local/icecast/logs/error.log && \
+    touch /usr/local/icecast/logs/access.log && \
     chown -R icecast:icecast /usr/local/icecast
 
 # Copier ta configuration
