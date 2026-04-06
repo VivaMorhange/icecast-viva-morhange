@@ -1,4 +1,4 @@
-FROM ghcr.io/djmaze/icecast:latest
+FROM docker.io/olbat/icecast
 
 COPY icecast.xml /etc/icecast.xml
 
