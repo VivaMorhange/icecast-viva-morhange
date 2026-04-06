@@ -1,4 +1,4 @@
-FROM moul/icecast
+FROM ghcr.io/djmaze/icecast:latest
 
 COPY icecast.xml /etc/icecast.xml
 
