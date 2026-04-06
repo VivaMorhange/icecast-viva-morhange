@@ -30,4 +30,10 @@
   </mount>
 
   <fileserve>1</fileserve>
+
+  <changeowner>
+    <user>icecast</user>
+    <group>icecast</group>
+  </changeowner>
 </icecast>
+
