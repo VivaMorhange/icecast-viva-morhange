@@ -1,4 +1,4 @@
-FROM icecast/icecast:2.4.4
+FROM ghcr.io/azuracast/icecast:latest
 
 COPY icecast.xml /etc/icecast.xml
 
