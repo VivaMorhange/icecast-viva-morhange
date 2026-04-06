@@ -1,34 +1,7 @@
-FROM debian:stable-slim
+FROM icecast/icecast:2.4.4
 
-# Installer Icecast
-RUN apt-get update && \
-    apt-get install -y icecast2 && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY icecast.xml /etc/icecast.xml
 
-# Créer un utilisateur système icecast
-RUN adduser --system --group icecast
-
-# Créer l'arborescence complète attendue par Icecast
-RUN mkdir -p /usr/local/icecast/logs && \
-    touch /usr/local/icecast/logs/error.log && \
-    touch /usr/local/icecast/logs/access.log && \
-    chown -R icecast:icecast /usr/local/icecast
-
-# Créer un fichier mime.types vide pour éviter le WARN
-RUN touch /etc/mime.types && \
-    chown icecast:icecast /etc/mime.types
-
-# Copier ta configuration
-COPY icecast.xml /etc/icecast2/icecast.xml
-
-# Donner les droits à l'utilisateur icecast sur la config
-RUN chown -R icecast:icecast /etc/icecast2
-
-# Icecast écoute sur 8000
 EXPOSE 8000
 
-# Passer en utilisateur non-root
-USER icecast
-
-# Lancer Icecast
-CMD ["icecast2", "-c", "/etc/icecast2/icecast.xml"]
+CMD ["icecast", "-c", "/etc/icecast.xml"]
