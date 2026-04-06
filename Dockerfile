@@ -1,6 +1,6 @@
-FROM debian:stable-slim
+FROM ubuntu:22.04
 
-# Dépendances nécessaires pour compiler Icecast
+# Installer dépendances pour compiler Icecast
 RUN apt-get update && \
     apt-get install -y \
         build-essential \
@@ -11,7 +11,8 @@ RUN apt-get update && \
         libogg-dev \
         libcurl4-openssl-dev \
         libssl-dev \
-        curl && \
+        curl \
+        adduser && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Télécharger Icecast officiel
