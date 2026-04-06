@@ -8,9 +8,9 @@ RUN apt-get update && \
 # Créer un utilisateur système icecast
 RUN adduser --system --group icecast
 
-# Créer le dossier de logs et donner les droits
-RUN mkdir -p /var/log/icecast2 && \
-    chown -R icecast:icecast /var/log/icecast2
+# Créer les dossiers de logs attendus par Icecast
+RUN mkdir -p /usr/local/icecast/logs && \
+    chown -R icecast:icecast /usr/local/icecast
 
 # Copier ta configuration
 COPY icecast.xml /etc/icecast2/icecast.xml
