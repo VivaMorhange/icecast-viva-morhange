@@ -5,8 +5,8 @@ RUN apt-get update && \
     apt-get install -y icecast2 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Créer un utilisateur icecast (comme Debian le fait normalement)
-RUN useradd -m icecast
+# Créer un utilisateur système icecast (compatible Debian slim)
+RUN adduser --system --group icecast
 
 # Copier ta configuration
 COPY icecast.xml /etc/icecast2/icecast.xml
