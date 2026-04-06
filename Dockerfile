@@ -1,4 +1,4 @@
-FROM docker.io/olbat/icecast
+FROM moul/icecast
 
 COPY icecast.xml /etc/icecast.xml
 
